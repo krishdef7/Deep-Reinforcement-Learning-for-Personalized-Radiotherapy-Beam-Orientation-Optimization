@@ -176,6 +176,7 @@ Training summary:
 - Bottleneck: 4×4×256
 - Fully connected head
 - Masking to prevent repeated beams
+- Model parameters: ~3.4M
 
 **Dose Surrogate:**
 1) Ray-traced geometric field  
@@ -209,7 +210,7 @@ DVH curves reflect improved target coverage.
 
 ## 📊 Baselines Implemented
 
-All evaluated under **identical surrogate dose**:
+All evaluated under **identical surrogate dose** to ensure fair comparision:
 
 - **Equiangular beams**
 - **Geometry heuristic**
@@ -265,6 +266,6 @@ Krish Garg, IIT Roorkee, 2025.**
 ## 🙏 Acknowledgements
 
 - OpenKBP dataset contributors
-- IIT Roorkee — Department of Physics
+- IIT Roorkee — Department of Physics (institutional affiliation)
 - No external funding used
 
