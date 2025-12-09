@@ -265,6 +265,6 @@ Krish Garg, IIT Roorkee, 2025.**
 ## 🙏 Acknowledgements
 
 - OpenKBP dataset contributors
-- IIT Roorkee — Department of Engineering Physics
+- IIT Roorkee — Department of Physics
 - No external funding used
 
