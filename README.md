@@ -195,10 +195,10 @@ Training summary:
 Located in:
 
 ```
-figures/strong/
-figures/median/
-figures/failure/
-figures/anomaly/
+figures/success_cases/
+figures/typical_cases/
+figures/failure_cases/
+figures/anomaly_cases/
 ```
 
 High-dose regions remain **inside PTV** and spare critical OARs.  
