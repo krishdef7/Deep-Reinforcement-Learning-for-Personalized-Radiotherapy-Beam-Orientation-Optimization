@@ -57,10 +57,10 @@ Beam-Angle-Optimization-in-Radiotherapy-Using-Deep-Reinforcement-Learning/
 ├── configs/
 │   └── experiments.json
 ├── figures/
-│   ├── strong/      # Best examples
-│   ├── median/      # Typical
-│   ├── failure/     # Failure cases
-│   └── anomaly/     # Special discussion
+│   ├── success_cases/      # Best examples
+│   ├── typical_cases/      # Typical
+│   ├── failure_cases/     # Failure cases
+│   └── anomaly_cases/     # Special discussion
 ├── models/
 │   └── best_dqn_model.pt
 ├── results/
