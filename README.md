@@ -2,7 +2,7 @@
 
 This repository contains the code and experiments for my work on **patient-specific Beam Orientation Optimization (BOO)** in head-and-neck radiotherapy using **Deep Q-Learning (DQN)**. The agent learns to select clinically meaningful gantry angles directly from voxel-level anatomy, **without** repeated Monte Carlo dose simulations.
 
-> **TL;DR:** Given CT + anatomical masks, this system proposes 5 optimal beam angles in **<1 second** inference per patient after training, improving PTV coverage vs. equiangular baselines.
+> **TL;DR:** Given CT anatomy and organ masks, we learn to predict 5 high-value beam angles in under a second, improving PTV coverage and sparing OARs compared to standard equiangular plans.
 
 
 ---
