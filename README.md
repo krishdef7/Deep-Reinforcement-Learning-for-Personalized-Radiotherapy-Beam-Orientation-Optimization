@@ -34,3 +34,27 @@ We formulate BOO as a **sequential decision problem** and train a Deep Q-Network
 
 The system produces **patient-adaptive beam sets in < 1 second** (CPU only).
 
+## 📁 Repository Structure
+
+```text
+Beam-Angle-Optimization-in-Radiotherapy-Using-Deep-Reinforcement-Learning/
+├── configs/
+│   └── experiments.json      # Experiment configuration, hyperparameters, patient splits
+├── figures/
+│   ├── strong/               # High-performing cases (good coverage + DVH)
+│   ├── median/               # Typical cases
+│   ├── failure/              # Failure modes / missed coverage
+│   └── anomaly/              # Outliers requiring discussion
+├── models/
+│   └── best_dqn_model.pt     # Best-performing checkpoint (saved after training)
+├── results/
+│   ├── summary_results.md    # Human-readable summary of evaluation
+│   └── test_results.csv      # Numerical metrics for 100 test patients
+├── utils/
+│   └── repro.py              # Reproducibility utilities (seeds, deterministic setup)
+├── baselines.py              # Equiangular / heuristic / random beam baselines
+├── eval_main.py              # Evaluation script (loads model, runs baselines, saves figs/metrics)
+├── train.py                  # DQN training pipeline (env, replay buffer, logging)
+├── requirements.txt          # Python dependencies
+└── README.md                 # You are here
+
