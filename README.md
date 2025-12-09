@@ -18,10 +18,10 @@ This repository contains the code and experiments for our work on **patient-spec
 Choosing good beam orientations is critical for high-quality radiotherapy plans.  
 Conventional BOO strategies (equiangular templates, simple heuristics, combinatorial solvers):
 
-- ❌ Are **not personalized** to anatomy
-- ❌ Become **computationally infeasible** at scale
-- ❌ Ignore **voxel-level geometry**
-- ❌ Often require repeated, slow **dose calculations**
+-  Are **not personalized** to anatomy
+-  Become **computationally infeasible** at scale
+-  Ignore **voxel-level geometry**
+-  Often require repeated, slow **dose calculations**
 
 ## 🚀 Proposed Solution
 
