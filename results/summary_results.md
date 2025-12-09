@@ -4,23 +4,23 @@
 - 100 held-out test cases (OpenKBP head-and-neck)
 - Inputs: CT + PTV + 5 OAR structures
 - Metrics:
-  - **D95** (coverage of prescription dose)
-  - **PTV Coverage** (fraction receiving ≥threshold dose)
+  - **D95** (dose received by 95% of the PTV)
+  - **PTV Coverage** (fraction of PTV receiving ≥ threshold dose)
   - **Mean OAR dose**
 
 ---
 
 ## 🧪 Mean Performance (100 Patients)
 
-| Method       | Coverage | D95   |
-|--------------|----------|-------|
+| Method         | Coverage | D95   |
+|----------------|----------|-------|
 | **DQN (ours)** | **0.8058** | **0.2405** |
-| Equiangular  | 0.6867   | 0.1207 |
-| Heuristic    | 0.6397   | 0.0949 |
-| Random       | 0.5883   | 0.0554 |
+| Equiangular    | 0.6867   | 0.1207 |
+| Heuristic      | 0.6397   | 0.0949 |
+| RandomMean     | 0.5883   | 0.0554 |
 
 **Observation:**  
-The DQN systematically improves PTV coverage and D95 relative to equiangular and heuristic baselines.
+The DQN generally improves PTV coverage and D95 relative to equiangular and heuristic baselines, with the random-beam baseline performing worst on average.
 
 ---
 
@@ -36,28 +36,28 @@ For each case, we compare DQN against the equiangular baseline in terms of **PTV
 
 ## 📊 Per-Patient Comparison (DQN vs Equiangular)
 
-| Patient | Cov(DQN) | Cov(Eq) | D95(DQN) | D95(Eq) | DQN vs Eq (PTV)              |
-|--------|----------|---------|----------|---------|------------------------------|
-| 4      | 0.455    | 0.327   | 0.000    | 0.000   | ↑ Coverage, same D95         |
-| 25     | 0.914    | 0.765   | 0.271    | 0.135   | ↑ Coverage, ↑ D95            |
-| 28     | 0.635    | 0.451   | 0.0003   | 0.0010  | ↑ Coverage, ↓ D95 (both low) |
-| 29     | 0.616    | 0.403   | 0.0022   | ~0.000  | ↑ Coverage, ↑ D95            |
-| 32     | 0.673    | 0.536   | 0.0002   | 0.0054  | ↑ Coverage, ↓ D95            |
-| 40     | 0.916    | 0.736   | 0.379    | 0.052   | ↑ Coverage, ↑ D95            |
-| 45     | 0.945    | 0.807   | 0.492    | 0.160   | ↑ Coverage, ↑ D95            |
-| 49     | 0.523    | 0.580   | 0.0013   | 0.0094  | ↓ Coverage, ↓ D95            |
-| 50     | 0.866    | 0.801   | 0.117    | 0.145   | ↑ Coverage, slightly ↓ D95   |
-| 56     | 0.839    | 0.769   | 0.178    | 0.105   | ↑ Coverage, ↑ D95            |
-| 57     | 0.755    | 0.642   | 0.083    | 0.045   | ↑ Coverage, ↑ D95            |
-| 60     | 0.852    | 0.676   | 0.170    | 0.023   | ↑ Coverage, ↑ D95            |
-| 74     | 0.994    | 0.894   | 0.902    | 0.310   | ↑ Coverage, ↑ D95 (near-ideal) |
-| 80     | 0.978    | 0.901   | 0.669    | 0.335   | ↑ Coverage, ↑ D95            |
-| 81     | 0.823    | 0.516   | 0.167    | 0.0036  | ↑ Coverage, ↑ D95            |
-| 83     | 0.949    | 0.751   | 0.504    | 0.044   | ↑ Coverage, ↑ D95            |
-| 84     | 0.416    | 0.319   | 0.0001   | 0.0003  | ↑ Coverage, ↓ D95 (very low dose) |
-| 88     | 1.000    | 1.000   | 1.000    | 1.000   | Same coverage and D95        |
-| 89     | 1.000    | 1.000   | 1.000    | 1.000   | Same coverage and D95        |
-| 90     | 0.794    | 0.846   | 0.064    | 0.183   | ↓ Coverage, ↓ D95            |
+| Patient | Cov(DQN) | Cov(Eq) | D95(DQN) | D95(Eq) | DQN vs Eq (PTV)                    |
+|--------|----------|---------|----------|---------|------------------------------------|
+| 4      | 0.455    | 0.327   | 0.000    | 0.000   | ↑ Coverage, same D95               |
+| 25     | 0.914    | 0.765   | 0.271    | 0.135   | ↑ Coverage, ↑ D95                  |
+| 28     | 0.635    | 0.451   | 0.0003   | 0.0010  | ↑ Coverage, ↓ D95 (both very low)  |
+| 29     | 0.616    | 0.403   | 0.0022   | ~0.000  | ↑ Coverage, ↑ D95                  |
+| 32     | 0.673    | 0.536   | 0.0002   | 0.0054  | ↑ Coverage, ↓ D95                  |
+| 40     | 0.916    | 0.736   | 0.379    | 0.052   | ↑ Coverage, ↑ D95                  |
+| 45     | 0.945    | 0.807   | 0.492    | 0.160   | ↑ Coverage, ↑ D95                  |
+| 49     | 0.523    | 0.580   | 0.0013   | 0.0094  | ↓ Coverage, ↓ D95                  |
+| 50     | 0.866    | 0.801   | 0.117    | 0.145   | ↑ Coverage, slightly ↓ D95         |
+| 56     | 0.839    | 0.769   | 0.178    | 0.105   | ↑ Coverage, ↑ D95                  |
+| 57     | 0.755    | 0.642   | 0.083    | 0.045   | ↑ Coverage, ↑ D95                  |
+| 60     | 0.852    | 0.676   | 0.170    | 0.023   | ↑ Coverage, ↑ D95                  |
+| 74     | 0.994    | 0.894   | 0.902    | 0.310   | ↑ Coverage, ↑ D95 (near-ideal)     |
+| 80     | 0.978    | 0.901   | 0.669    | 0.335   | ↑ Coverage, ↑ D95                  |
+| 81     | 0.823    | 0.516   | 0.167    | 0.0036  | ↑ Coverage, ↑ D95                  |
+| 83     | 0.949    | 0.751   | 0.504    | 0.044   | ↑ Coverage, ↑ D95                  |
+| 84     | 0.416    | 0.319   | 0.0001   | 0.0003  | ↑ Coverage, ↓ D95 (very low dose)  |
+| 88     | 1.000    | 1.000   | 1.000    | 1.000   | Same coverage and D95              |
+| 89     | 1.000    | 1.000   | 1.000    | 1.000   | Same coverage and D95              |
+| 90     | 0.794    | 0.846   | 0.064    | 0.183   | ↓ Coverage, ↓ D95                  |
 
 Values are rounded to three decimal places for readability.
 
@@ -95,6 +95,8 @@ For these 20 patients, corresponding qualitative figures (CT + dose overlays and
 - `figures/anomaly_cases/`
 
 These visualizations complement the quantitative metrics above, showing how the DQN generally keeps high-dose regions within the PTV while reducing unnecessary exposure to nearby OARs, with a few clearly documented failure modes.
+
+---
 
 ## 📁 Output Files
 
