@@ -1,0 +1,19 @@
+{
+  "seed": 1234,
+  "device": "cuda",
+
+  "train_dir": "C:\\BAO\\openkbp_patient_data\\train-pats",
+  "val_dir": "C:\\BAO\\openkbp_patient_data\\validation-pats",
+  "test_dir": "C:\\BAO\\openkbp_patient_data\\test-pats",
+
+  "organs": ["SpinalCord", "Brainstem", "LeftParotid", "RightParotid", "Mandible"],
+  "shape": [128, 128, 128],
+
+  "checkpoint": "best_dqn_model.pt",
+  "in_channels": 8,
+  "max_beams": 5,
+
+  "n_random": 100,
+  "out_csv": "results/eval_results_full.csv"
+}
+    
