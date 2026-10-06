@@ -2,7 +2,7 @@
 
 This repository contains the code and experiments for my work on **patient-specific Beam Orientation Optimization (BOO)** in head-and-neck radiotherapy using **Deep Q-Learning (DQN)**. The agent learns to select clinically meaningful gantry angles directly from voxel-level anatomy, **without** repeated Monte Carlo dose simulations.
 
-> **TL;DR:** Given CT anatomy and organ masks, we learn to predict 5 high-value beam angles in under a second, improving PTV coverage and sparing OARs compared to standard equiangular plans.
+> **TL;DR:** Given CT anatomy and organ masks, a DQN picks 5 beam angles in under a second. On 100 held-out OpenKBP head-and-neck patients it raises mean PTV coverage from **0.687 → 0.806** (+11.9 points) and D95 from **0.121 → 0.241** (~2×) vs standard equiangular plans. Trade-off: mean OAR dose is higher than equiangular (parotids, mandible; see Results), so OAR sparing is the main open problem.
 
 
 ---
@@ -151,10 +151,11 @@ Training summary:
 | RandomMean    | 0.5883    | 0.0554 |
 
 ### Key Highlights
-- **+11.9% absolute improvement** in PTV coverage
+- **+11.9 points absolute** in mean PTV coverage (0.687 → 0.806)
 - **~2× improvement** in D95
 - **<1 second** per patient (post-training)
-- Strong generalization across **100 unseen CT cases**
+- Evaluated on **100 unseen CT cases**
+- **Trade-off:** mean OAR dose is higher than equiangular. Left parotid 0.277 vs 0.191, right parotid 0.281 vs 0.276, mandible 0.233 vs 0.100 (normalized dose, `results/test_results.csv`). The agent buys target coverage partly at the OARs' expense.
 
 
 ---
@@ -202,7 +203,7 @@ figures/failure_cases/
 figures/anomaly_cases/
 ```
 
-High-dose regions remain **inside PTV** and spare critical OARs.  
+Success cases keep high-dose regions inside the PTV. Failure and anomaly cases show where dose spills into OARs.  
 DVH curves reflect improved target coverage.
 
 
